@@ -36,7 +36,7 @@ exports.up = function (knex) {
         .onDelete("RESTRICT");
     })
 
-    .createTable("task", (tbl) => {
+    .createTable("tasks", (tbl) => {
       tbl.increments("id");
       tbl.text("description", 255).notNullable().unique().index();
       tbl.text("notes", 500);
@@ -54,7 +54,7 @@ exports.up = function (knex) {
 
 exports.down = function (knex) {
   return knex.schema
-    .dropTableIfExists("task")
+    .dropTableIfExists("tasks")
     .dropTableIfExists("project_resources")
     .dropTableIfExists("resources")
     .dropTableIfExists("projects");
